@@ -99,6 +99,12 @@ input {
     margin-bottom: 20px;
 }
 
+#ascii-area {
+    margin-bottom: 20px;
+    font-size: 10px;
+    transform: scale(0.4);
+}
+
 /* footer部分 */
 footer {
     width: 100%;

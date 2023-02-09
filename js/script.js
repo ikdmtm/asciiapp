@@ -29,8 +29,8 @@ function drawImage1(dataURL) {
         culcurate(image1, imageData);
         //変更を描画
         drawImage2(image1, imageData);
-
-        
+        //asciiアート作成
+        // ascii(image1, imageData);
     }
 }
 //変更を描画
@@ -47,7 +47,13 @@ function drawImage2(image1, imageData) {
 //imageData.dataに一次元配列でピクセルデータを格納
 function culcurate(image1, imageData){
     const pixel = imageData.data;
+    //ASCIIアート用
+    // const strArray = [' ', '.', '-', 'c', 'b', 's', '+', 'f', 'e', 'm', 'g', '&', '#', '$', '@', '%'];
+    const asciiArray = [];
+    const k = 16;
+    //ここまで
     for (let y = 0; y < image1.height; y++) {
+        let line = ''; //asccii
         for (let x = 0; x < image1.width; x++) {
             let index = (x + y * image1.width) * 4;
             let r = pixel[index];
@@ -58,13 +64,67 @@ function culcurate(image1, imageData){
             for (let i = 0; i < 3; i++) {
                 pixel[index + i] = gray;
             }
+            //ascii用
+            //数値を文字に変換
+            if (pixel[index] <= k-1){
+                line += '%';
+            }else if(pixel[index] <= 2*k-1){
+                line += '@';
+            }else if(pixel[index] <= 3*k-1){
+                line += '$';
+            }else if(pixel[index] <= 4*k-1){
+                line += '#';
+            }else if(pixel[index] <= 5*k-1){
+                line += '&';
+            }else if(pixel[index] <= 6*k-1){
+                line += 'g';
+            }else if(pixel[index] <= 7*k-1){
+                line += 'm';
+            }else if(pixel[index] <= 8*k-1){
+                line += 'e';
+            }else if(pixel[index] <= 9*k-1){
+                line += 'f';
+            }else if(pixel[index] <= 10*k-1){
+                line += '+';
+            }else if(pixel[index] <= 11*k-1){
+                line += 's';
+            }else if(pixel[index] <= 12*k-1){
+                line += 'b';
+            }else if(pixel[index] <= 13*k-1){
+                line += 'c';
+            }else if(pixel[index] <= 14*k-1){
+                line += '-';
+            }else if(pixel[index] <= 15*k-1){
+                line += '.';
+            }else if(pixel[index] <= 16*k-1){
+                line += ' ';
+            }
         }
+        asciiArray.push(line); //ascii用
     }
     console.log(imageData.data, '変換後1');
+    console.log(asciiArray);
+    //textareaに文字を表示
+    let asciiText = '';
+    const text = document.getElementById('ascii-area');
+    console.log(asciiArray[0]);
+    for(let i=0; i < asciiArray.length; i++){
+        asciiText += asciiArray[i] + '\n';
+    }
+    console.log(asciiText);
+    text.textContent = asciiText;
 }
 
+//ファイル選択のボタン
 const imageButton = document.getElementById('image-button');
 const fileInput = document.getElementById('input-form');
 imageButton.addEventListener('click', function(){
     fileInput.click();
 });
+
+//textareaを
+document.getElementById('ascii-form');
+
+// 10 0.4 4
+// 4 10/4 5/2 *2.5
+// 135*0.4
