@@ -8,7 +8,6 @@ html {
 }
 
 body {
-    /* margin: 0 auto; */
     margin: 0;
     min-height: 100vh;
     display: flex;
@@ -20,6 +19,10 @@ ul {
     list-style: none;
 }
 
+a {
+    text-decoration: none;
+}
+
 /* header部分 */
 header {
     width: 100%;
@@ -27,11 +30,17 @@ header {
     background-color: #3ebfff;
     text-align: center;
     line-height: 55px;
+    font-size: 20px;
+}
+
+header a {
+    color: white;
 }
 
 /* main部分 */
 main {
-    max-width: 800px;
+    margin: 0 20px;
+    max-width: 900px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,19 +59,38 @@ main {
 }
 
 #canvas1 {
-    border: 2px solid;
-    margin: 20px 5px;
+    border: 1px solid;
+    margin: 5px;
     width: 50%;
 }
 
 #canvas2 {
-    border:2px solid;
-    margin: 20px 5px;
+    border:1px solid;
+    margin: 5px;
     width: 50%;
 }
 
-label {
-    margin-right: 20px;
+#image-button {
+    margin-top: 20px;
+    width: 100px;
+    height: 30px;
+    background-color: #3ebfff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    box-shadow: 0 4px #d8d8d8;
+    cursor: pointer;
+}
+
+#image-button:active {
+    /* cursor: pointer; */
+    box-shadow: none;
+    position: relative;
+    top: 4px;
+}
+
+input {
+    display: none;
 }
 
 .form {
@@ -73,7 +101,19 @@ label {
 
 /* footer部分 */
 footer {
-    width: 100%;;
+    width: 100%;
     height: 55px;
     background-color: rgb(79, 79, 99);
+}
+
+@media screen and (max-width: 800px){
+    .canvas{
+        flex-direction: column;   
+    }
+    #canvas1{
+        width: 100%;
+    }
+    #canvas2{
+        width: 100%;
+    }
 }

@@ -63,10 +63,8 @@ function culcurate(image1, imageData){
     console.log(imageData.data, '変換後1');
 }
 
-
-// \begin{eqnarray*} Gray = Red\times 0.3 + Green\times 0.59 + Blue\times 0.11 \end{eqnarray*}
-// image_data.data[(x + y * 256) * 4] = 赤成分
-// image_data.data[(x + y * 256) * 4 + 1] = 緑成分
-// image_data.data[(x + y * 256) * 4 + 2] = 青成分
-// image_data.data[(x + y * 256) * 4 + 3] = アルファ成分
-//0.2126*R' + 0.7152*G' + 0.0722*B'
+const imageButton = document.getElementById('image-button');
+const fileInput = document.getElementById('input-form');
+imageButton.addEventListener('click', function(){
+    fileInput.click();
+});
