@@ -102,6 +102,8 @@ input {
 #ascii-area {
     margin-bottom: 20px;
     font-size: 10px;
+    width: 250%;
+    height: 500px;
     transform: scale(0.4);
 }
 

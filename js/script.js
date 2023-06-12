@@ -48,7 +48,7 @@ function drawImage2(image1, imageData) {
 function culcurate(image1, imageData){
     const pixel = imageData.data;
     //ASCIIアート用
-    // const strArray = [' ', '.', '-', 'c', 'b', 's', '+', 'f', 'e', 'm', 'g', '&', '#', '$', '@', '%'];
+    const strArray = [' ', '.', '-', 'c', 'b', 's', '+', 'f', 'e', 'm', 'g', '&', '#', '$', '@', '%'];
     const asciiArray = [];
     const k = 16;
     //ここまで
@@ -67,37 +67,37 @@ function culcurate(image1, imageData){
             //ascii用
             //数値を文字に変換
             if (pixel[index] <= k-1){
-                line += '%';
+                line += strArray[k-1];
             }else if(pixel[index] <= 2*k-1){
-                line += '@';
+                line += strArray[k-2];
             }else if(pixel[index] <= 3*k-1){
-                line += '$';
+                line += strArray[k-3];
             }else if(pixel[index] <= 4*k-1){
-                line += '#';
+                line += strArray[k-4];
             }else if(pixel[index] <= 5*k-1){
-                line += '&';
+                line += strArray[k-5];
             }else if(pixel[index] <= 6*k-1){
-                line += 'g';
+                line += strArray[k-6];
             }else if(pixel[index] <= 7*k-1){
-                line += 'm';
+                line += strArray[k-7];
             }else if(pixel[index] <= 8*k-1){
-                line += 'e';
+                line += strArray[k-8];
             }else if(pixel[index] <= 9*k-1){
-                line += 'f';
+                line += strArray[k-9];
             }else if(pixel[index] <= 10*k-1){
-                line += '+';
+                line += strArray[k-10];
             }else if(pixel[index] <= 11*k-1){
-                line += 's';
+                line += strArray[k-11];
             }else if(pixel[index] <= 12*k-1){
-                line += 'b';
+                line += strArray[k-12];
             }else if(pixel[index] <= 13*k-1){
-                line += 'c';
+                line += strArray[k-13];
             }else if(pixel[index] <= 14*k-1){
-                line += '-';
+                line += strArray[k-14];
             }else if(pixel[index] <= 15*k-1){
-                line += '.';
+                line += strArray[k-15];
             }else if(pixel[index] <= 16*k-1){
-                line += ' ';
+                line += strArray[k-16];
             }
         }
         asciiArray.push(line); //ascii用
@@ -108,7 +108,7 @@ function culcurate(image1, imageData){
     let asciiText = '';
     const text = document.getElementById('ascii-area');
     console.log(asciiArray[0]);
-    for(let i=0; i < asciiArray.length; i++){
+    for(let i=0; i < asciiArray.length; i+=2){//縦の長さが実際より長くなるのをi+=2で対処
         asciiText += asciiArray[i] + '\n';
     }
     console.log(asciiText);
